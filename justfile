@@ -26,7 +26,8 @@ _install-typo3 command:
       --admin-user-name=admin \
       --admin-password=Admin%123 \
       --site-setup-type=site \
-      --site-base-url=https://typo3-bugs.ddev.site/
+      --site-base-url=https://typo3-bugs.ddev.site/ \
+      --site-name="Bug Reproduction Template"
 
 _ddev-config php-version env:
     ddev config \
