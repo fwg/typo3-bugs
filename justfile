@@ -24,9 +24,10 @@ _install-typo3 command:
       --database-name=db \
       --use-existing-database \
       --admin-user-name=admin \
-      --admin-password=Admin%123 \
+      --admin-password="Admin%123" \
       --site-setup-type=site \
-      --site-base-url=https://typo3-bugs.ddev.site/
+      --site-base-url=https://typo3-bugs.ddev.site/ \
+      --site-name="Bug #81099"
 
 _ddev-config php-version env:
     ddev config \
@@ -61,4 +62,4 @@ ddev-12-4: ddev-clean _ddev-dirs
     git checkout -- composer.json
 
 reproduce:
-    @echo "TODO: add reproduction steps here"
+    ddev launch

@@ -1,0 +1,14 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+      data-namespace-typo3-fluid="true">
+<f:render partial="Test" arguments="{_all}" />
+<p>
+    Here EXT:bugs_ext wants to maybe re-use some of EXT:bugs_base partials, but also use its own.<br>
+    Its own partials should take precedence!
+</p>
+<p>Actual partialRootPaths (compare to TS setup in <kbd>EXT:bugs_ext/ext_localconf.php</kbd>):</p>
+<ul>
+    <f:for each="{paths.partialRootPaths}" as="path" key="key">
+        <li>{key} = {path}</li>
+    </f:for>
+</ul>
+</html>
