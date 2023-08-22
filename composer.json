@@ -1,0 +1,63 @@
+{
+  "name": "fwg/typo3-bugs",
+  "type": "project",
+  "license": "GPL-2.0-or-later",
+  "autoload": {
+    "psr-4": {
+    }
+  },
+  "authors": [
+    {
+      "name": "Friedemann Altrock",
+      "email": "typo3@faltrock.de"
+    }
+  ],
+  "repositories": [
+    {"type": "path", "url": "src/*"}
+  ],
+  "require": {
+    "php": "^7.4 || ^8.2",
+    "fwg/bugs-base": "dev-main",
+    "helhum/typo3-console": "^v6.7 || ^v7.1 || ^v8.0",
+    "typo3/cms-belog": "^10.4 || ^11.5 || ^12.4",
+    "typo3/cms-beuser": "^10.4 || ^11.5 || ^12.4",
+    "typo3/cms-core": "^10.4 || ^11.5 || ^12.4",
+    "typo3/cms-dashboard": "^10.4 || ^11.5 || ^12.4",
+    "typo3/cms-felogin": "^10.4 || ^11.5 || ^12.4",
+    "typo3/cms-filemetadata": "^10.4 || ^11.5 || ^12.4",
+    "typo3/cms-fluid-styled-content": "^10.4 || ^11.5 || ^12.4",
+    "typo3/cms-form": "^10.4 || ^11.5 || ^12.4",
+    "typo3/cms-impexp": "^10.4 || ^11.5 || ^12.4",
+    "typo3/cms-info": "^10.4 || ^11.5 || ^12.4",
+    "typo3/cms-lowlevel": "^10.4 || ^11.5 || ^12.4",
+    "typo3/cms-recycler": "^10.4 || ^11.5 || ^12.4",
+    "typo3/cms-redirects": "^10.4 || ^11.5 || ^12.4",
+    "typo3/cms-reports": "^10.4 || ^11.5 || ^12.4",
+    "typo3/cms-rte-ckeditor": "^10.4 || ^11.5 || ^12.4",
+    "typo3/cms-scheduler": "^10.4 || ^11.5 || ^12.4",
+    "typo3/cms-seo": "^10.4 || ^11.5 || ^12.4",
+    "typo3/cms-setup": "^10.4 || ^11.5 || ^12.4",
+    "typo3/cms-sys-note": "^10.4 || ^11.5 || ^12.4",
+    "typo3/cms-t3editor": "^10.4 || ^11.5 || ^12.4",
+    "typo3/cms-tstemplate": "^10.4 || ^11.5 || ^12.4",
+    "typo3/cms-viewpage": "^10.4 || ^11.5 || ^12.4",
+    "typo3/minimal": "^10.4 || ^11.5 || ^12.4",
+    "typo3/testing-framework": "^6 || ^7 || ^8"
+  },
+  "config": {
+    "sort-packages": true,
+    "allow-plugins": {
+      "typo3/cms-composer-installers": true,
+      "typo3/class-alias-loader": true
+    }
+  },
+  "extra": {
+    "typo3/cms": {
+      "cms-package-dir": "{$vendor-dir}/typo3/cms",
+      "web-dir": "public",
+      "app-dir": "."
+    }
+  },
+  "scripts": {
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "name": "fwg/bugs-base",
+  "type": "typo3-cms-extension",
+  "license": "GPL-2.0-or-later",
+  "autoload": {
+    "psr-4": {
+      "Fwg\\BugsBase\\": "Classes/"
+    }
+  },
+  "authors": [
+    {
+      "name": "Friedemann Altrock",
+      "email": "typo3@faltrock.de"
+    }
+  ],
+  "require": {
+    "php": "^7.4 || ^8.2",
+    "typo3/cms-core": "^10.4 || ^11.5 || ^12.4"
+  },
+  "extra": {
+    "typo3/cms": {
+      "extension-key": "bugs_base"
+    }
+  }
+}

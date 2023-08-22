@@ -1,0 +1,7 @@
+/.ddev
+/bin
+/composer.lock
+/config/
+/public/
+/var/
+/vendor/
