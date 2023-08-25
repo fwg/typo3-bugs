@@ -1,0 +1,9 @@
+lib.contentElement.templateRootPaths.10 = EXT:bugs_base/Resources/Private/Templates/
+
+lib.parseFunc.allowTags := addToList(custom-element)
+lib.parseFunc_RTE.allowTags := addToList(custom-element)
+
+lib.parseFunc_RTE.nonTypoTagStdWrap.encapsLines >
+
+lib.parseFunc.htmlSanitize = 0
+lib.parseFunc_RTE.htmlSanitize = 0

@@ -27,7 +27,7 @@ _install-typo3 command:
       --admin-password=Admin%123 \
       --site-setup-type=site \
       --site-base-url=https://typo3-bugs.ddev.site/ \
-      --site-name="Bug Reproduction Template"
+      --site-name="Issue #101190"
 
 _ddev-config php-version env:
     ddev config \
@@ -41,7 +41,7 @@ ddev-10-4: ddev-clean _ddev-dirs
     just _ddev-config 7.4 TYPO3_CONTEXT=Development
     ddev start
     # narrow TYPO3 version to 10.4 LTS
-    ddev composer require typo3/cms-core:^10.4
+    ddev composer require typo3/cms-core:10.4.37
     just _install-typo3 typo3cms
     git checkout -- composer.json
 
@@ -49,7 +49,7 @@ ddev-11-5: ddev-clean _ddev-dirs
     just _ddev-config 8.2 TYPO3_CONTEXT=Development
     ddev start
     # narrow TYPO3 version to 11.5 LTS
-    ddev composer require typo3/cms-core:^11.5
+    ddev composer require typo3/cms-core:11.5.30
     just _install-typo3 typo3cms
     git checkout -- composer.json
 
@@ -57,9 +57,10 @@ ddev-12-4: ddev-clean _ddev-dirs
     just _ddev-config 8.2 TYPO3_CONTEXT=Development,TYPO3_PATH_ROOT=/var/www/html/public,TYPO3_PATH_APP=/var/www/html
     ddev start
     # narrow TYPO3 version to 12.4 LTS
-    ddev composer require typo3/cms-core:^12.4
+    ddev composer require typo3/cms-core:12.4.5
     just _install-typo3 typo3
     git checkout -- composer.json
 
 reproduce:
-    @echo "TODO: add reproduction steps here"
+    ddev typo3 bugs:init
+    ddev launch

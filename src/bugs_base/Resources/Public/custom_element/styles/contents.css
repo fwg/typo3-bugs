@@ -1,0 +1,9 @@
+custom-element {
+    display: block;
+    border: 1px solid grey;
+    padding: 5px;
+}
+
+custom-element::before {
+    content: 'custom-element: ';
+}

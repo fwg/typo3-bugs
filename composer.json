@@ -58,6 +58,10 @@
       "cms-package-dir": "{$vendor-dir}/typo3/cms",
       "web-dir": "public",
       "app-dir": "."
+    },
+    "patches": {
+      "typo3/cms-core": {
+      }
     }
   },
   "scripts": {

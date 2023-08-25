@@ -1,0 +1,34 @@
+# Load default processing options
+imports:
+  - { resource: "EXT:rte_ckeditor/Configuration/RTE/Processing.yaml" }
+  - { resource: "EXT:rte_ckeditor/Configuration/RTE/Editor/Base.yaml" }
+
+# Minimal configuration for the editor
+editor:
+  externalPlugins:
+    typo3link: { resource: "EXT:rte_ckeditor/Resources/Public/JavaScript/Plugins/typo3link.js", route: "rteckeditor_wizard_browse_links" }
+    custom_element:
+      resource: "EXT:bugs_base/Resources/Public/custom_element/"
+
+  config:
+    contentsCss:
+      - "EXT:rte_ckeditor/Resources/Public/Css/contents.css"
+      - "EXT:bugs_base/Resources/Public/custom_element/styles/contents.css"
+    toolbarGroups:
+      - { name: basicstyles, groups: [ basicstyles ] }
+      - { name: links }
+      - { name: clipboard, groups: [clipboard, undo] }
+      - { name: document, groups: [ mode, insert ] }
+    removeButtons:
+      - Italic
+      - Anchor
+      - Underline
+      - Strike
+    extraPlugins:
+      - custom_element
+
+processing:
+  allowTags:
+    - custom-element
+  allowTagsOutside:
+    - custom-element
