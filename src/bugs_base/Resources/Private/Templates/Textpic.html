@@ -1,0 +1,20 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+      xmlns:bugs="http://typo3.org/ns/Fwg/BugsBase/ViewHelpers"
+      data-namespace-typo3-fluid="true">
+<f:layout name="Default" />
+<f:section name="Header">
+    <f:render partial="Header/All" arguments="{_all}" />
+</f:section>
+<f:section name="Main">
+    <div class="ce-textpic">
+        <f:if condition="{data.bodytext}">
+            <div class="ce-bodytext">
+                <f:format.html>{data.bodytext}</f:format.html>
+            </div>
+        </f:if>
+
+        <h3>Image Info:</h3>
+        <bugs:dumpImageInfo image="{files.0}" />
+    </div>
+</f:section>
+</html>

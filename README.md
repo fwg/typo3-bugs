@@ -1,18 +1,13 @@
-# fwg's TYPO3 Bug Reproductions
+# Reproduction for #101810
 
-This is a repository where I record reproductions for TYPO3 bugs.
-
-<!-- Template for branch:
-# Reproduction for #...
-
-Description...
+Passing a `FileReference` to `ContentObjectRenderer::getImgResource` should
+respect the reference crop configuration.
 
 Pertinent files:
 
-* [...](src/bugs_base/...)
+* [Call to getImgResource in a ViewHelper](src/bugs_base/Classes/ViewHelpers/DumpImageInfoViewHelper.php)
 
-Forge issue: [#...](https://forge.typo3.org/issues/...)
--->
+Forge issue: [#101810](https://forge.typo3.org/issues/101810)
 
 * `just ddev-10-4` or `just ddev-11-5` or `just ddev-12-4`
 * `just reproduce`
@@ -22,8 +17,3 @@ Forge issue: [#...](https://forge.typo3.org/issues/...)
 * [ddev](https://ddev.com/)
 * [jq](https://jqlang.github.io/jq/)
 * [just](https://github.com/casey/just)
-
-## Bugs
-
-* Issue: [#81099](https://forge.typo3.org/issues/81099) | Branch: [forge/81099](https://github.com/fwg/typo3-bugs/tree/forge/81099)
-* Issue: [#101190](https://forge.typo3.org/issues/101190) | Branch: [forge/101190](https://github.com/fwg/typo3-bugs/tree/forge/101190)
