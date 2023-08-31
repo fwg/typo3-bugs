@@ -1,0 +1,2 @@
+lib.contentElement.templateRootPaths.10 = EXT:bugs_base/Resources/Private/Templates/
+

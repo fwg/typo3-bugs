@@ -1,0 +1,12 @@
+services:
+  _defaults:
+    autowire: true
+    autoconfigure: true
+
+  Fwg\BugsBase\Cli\InitCommand:
+    tags:
+      - name: 'console.command'
+        command: 'bugs:init'
+        description: 'Initialize database for bug reproduction.'
+        schedulable: false
+        hidden: false
