@@ -60,7 +60,8 @@
       "app-dir": "."
     },
     "patches": {
-      "typo3/cms-core": {
+      "typo3/cms-frontend": {
+        "fix ContentObjectRenderer::getImgResource for FileReference crop": "https://github.com/TYPO3/typo3/commit/693f2227b2f148913d1222fd6485cef016a9ebfc.patch"
       }
     }
   },
