@@ -22,8 +22,3 @@ Forge issue: [#...](https://forge.typo3.org/issues/...)
 * [ddev](https://ddev.com/)
 * [jq](https://jqlang.github.io/jq/)
 * [just](https://github.com/casey/just)
-
-## Bugs
-
-* Issue: [#81099](https://forge.typo3.org/issues/81099) | Branch: [forge/81099](https://github.com/fwg/typo3-bugs/tree/forge/81099)
-* Issue: [#101190](https://forge.typo3.org/issues/101190) | Branch: [forge/101190](https://github.com/fwg/typo3-bugs/tree/forge/101190)
