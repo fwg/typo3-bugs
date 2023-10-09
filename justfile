@@ -26,8 +26,8 @@ _install-typo3 command:
       --admin-user-name=admin \
       --admin-password=Admin%123 \
       --site-setup-type=site \
-      --site-base-url=https://typo3-bugs.ddev.site/ \
-      --site-name="Issue #..."
+      --site-base-url="https://typo3-bugs.ddev.site/" \
+      --site-name="Issue #90600"
 
 _ddev-config php-version env:
     ddev config \
@@ -63,4 +63,5 @@ ddev-12-4: ddev-clean _ddev-dirs
 
 reproduce:
     ddev typo3 bugs:init
+    ddev typo3 bugs:trigger
     ddev launch

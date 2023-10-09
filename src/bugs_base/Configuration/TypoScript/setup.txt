@@ -1,2 +1,13 @@
 lib.contentElement.templateRootPaths.10 = EXT:bugs_base/Resources/Private/Templates/
 
+page = PAGE
+page {
+    5 = TEXT
+    5.value = Without Cookie:<br>
+    10 < styles.content.get
+}
+
+[request && traverse(request.getCookieParams(), 'test_90600') == 1]
+config.cache_period = 1
+page.5.value = With Cookie:<br>
+[end]

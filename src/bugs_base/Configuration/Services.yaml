@@ -10,3 +10,11 @@ services:
         description: 'Initialize database for bug reproduction.'
         schedulable: false
         hidden: false
+
+  Fwg\BugsBase\Cli\TriggerBugCommand:
+    tags:
+      - name: 'console.command'
+        command: 'bugs:trigger'
+        description: 'Trigger Bug #90600'
+        schedulable: false
+        hidden: false
