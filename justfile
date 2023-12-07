@@ -27,7 +27,7 @@ _install-typo3 command:
       --admin-password=Admin%123 \
       --site-setup-type=site \
       --site-base-url=https://typo3-bugs.ddev.site/ \
-      --site-name="Issue #..."
+      --site-name="Issue #102622"
 
 _ddev-config php-version env:
     ddev config \
@@ -49,18 +49,26 @@ ddev-11-5: ddev-clean _ddev-dirs
     just _ddev-config 8.2 TYPO3_CONTEXT=Development
     ddev start
     # narrow TYPO3 version to 11.5 LTS
-    ddev composer require typo3/cms-core:11.5.31
+    ddev composer require typo3/cms-core:11.5.33
     just _install-typo3 typo3cms
     git checkout -- composer.json
+    mkdir -p config/sites/main
+    cp config-en-de-fr.yaml config/sites/main/config.yaml
+
 
 ddev-12-4: ddev-clean _ddev-dirs
     just _ddev-config 8.2 TYPO3_CONTEXT=Development,TYPO3_PATH_ROOT=/var/www/html/public,TYPO3_PATH_APP=/var/www/html
     ddev start
     # narrow TYPO3 version to 12.4 LTS
-    ddev composer require typo3/cms-core:12.4.6
+    ddev composer require typo3/cms-core:12.4.8
     just _install-typo3 typo3
     git checkout -- composer.json
+    mkdir -p config/sites/main
+    cp config-en-de-fr.yaml config/sites/main/config.yaml
 
 reproduce:
+    ddev typo3 cache:flush
     ddev typo3 bugs:init
-    ddev launch
+    @echo "Launching backend in 5 seconds..."
+    @sleep 5
+    ddev launch /typo3/module/web/list?id=2

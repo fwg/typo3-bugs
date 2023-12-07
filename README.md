@@ -1,20 +1,11 @@
-# fwg's TYPO3 Bug Reproductions
+# Reproduction for #102622
 
-This is a repository where I record reproductions for TYPO3 bugs.
+When a user who is limited to certain languages opens the List module on a page
+which is not contained in the subtree of a site root, an exception occurs.
 
-<!-- Template for branch:
-# Reproduction for #...
+Forge issue: [#102622](https://forge.typo3.org/issues/102622)
 
-Description...
-
-Pertinent files:
-
-* [...](src/bugs_base/...)
-
-Forge issue: [#...](https://forge.typo3.org/issues/...)
--->
-
-* `just ddev-10-4` or `just ddev-11-5` or `just ddev-12-4`
+* `just ddev-11-5` or `just ddev-12-4`
 * `just reproduce`
 
 ## Requirements
