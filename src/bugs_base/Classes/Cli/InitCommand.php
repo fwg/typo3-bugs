@@ -30,7 +30,21 @@ class InitCommand extends Command
 
         $dh = GeneralUtility::makeInstance(DataHandler::class);
         $dh->start([
-            // ...
+            'pages' => [
+                1 => [
+                    'tsconfig_includes' => 'EXT:bugs_base/Configuration/TsConfig/Page.tsconfig'
+                ],
+                'NEW1' => [
+                    'title' => 'First',
+                    'pid' => 1,
+                    'hidden' => 0,
+                ],
+                'NEW2' => [
+                    'title' => 'Second',
+                    'pid' => 1,
+                    'hidden' => 0,
+                ],
+            ]
         ], []);
         $dh->process_datamap();
 
@@ -60,6 +74,7 @@ class InitCommand extends Command
             $query->resetQueryParts();
             $query->update('sys_template')
                 ->set('include_static_file', join(',', $includes))
+                ->set('config', '')
                 ->where($query->expr()->eq('uid', 1));
 
             if (!$query->execute()) {

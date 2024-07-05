@@ -1,0 +1,5 @@
+some_property = no
+
+[2 in tree.rootLineIds]
+some_property = yes
+[end]
