@@ -1,6 +1,6 @@
 # add this as `.ddev/web-build/Dockerfile.imagemagick7` then ddev restart to build with IM7
 
-ENV WEBP_VERSION=1.3.2
+ENV WEBP_VERSION=1.4.0
 ENV IM_VERSION=7.1.1-41
 
 RUN apt update && apt install -y build-essential pkg-config libpng-dev libjpeg-dev libtiff-dev libheif-dev

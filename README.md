@@ -1,24 +1,25 @@
-# fwg's TYPO3 Bug Reproductions
+# Reproduction for #91274
 
-This is a repository where I record reproductions for TYPO3 bugs.
+Some installations of ImageMagick 7 produce wrong images because the result is
+not of `-type TrueType`. This is visible in the `Environment` module's image
+processing test.
 
-<!-- Template for branch:
-# Reproduction for #...
+Forge issue: [#91274](https://forge.typo3.org/issues/91274)
 
-Description...
+Targets for `just`:
 
-Pertinent files:
+* `ddev-13-4`: TYPO3 v13.4 under DDEV with an extra Dockerfile to compile IM7
+* `alpine-stock`: TYPO3 v13.4 under `php -S` with Alpine 3.21 and stock IM7
+* `alpine-compile`: TYPO3 v13.4 under `php -S` with Alpine 3.21 and compiled IM7
 
-* [...](src/bugs_base/...)
+For the alpine based targets you need to run through the initial TYPO3 setup,
+the ddev one already has the setup step done on the CLI (user/pw see `justfile`).
 
-Forge issue: [#...](https://forge.typo3.org/issues/...)
--->
-
-* `just ddev-10-4` or `just ddev-11-5` or `just ddev-12-4` or `just ddev-13-4`
-* `just reproduce`
+Note: the `src/` directory can be ignored for this bug.
 
 ## Requirements
 
-* [ddev](https://ddev.com/)
+* some Docker-compatible container runner, `docker` CLI
+* [ddev](https://ddev.com/) if you want to test the DDEV environment
 * [jq](https://jqlang.github.io/jq/)
 * [just](https://github.com/casey/just)

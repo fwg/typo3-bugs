@@ -10,6 +10,7 @@ ddev-clean:
 
 _ddev-dirs:
     mkdir .ddev
+    mkdir .ddev/web-build
     mkdir -p public/typo3
     [ -L bin ] || ln -snvf vendor/bin bin
 
@@ -37,7 +38,7 @@ _ddev-config php-version env:
       --docroot=public \
       --web-environment="{{env}}"
 
-ddev-10-4: ddev-clean _ddev-dirs
+ddev-10-4: ddev-clean _ddev-dirs _add-im7
     just _ddev-config 7.4 TYPO3_CONTEXT=Development
     ddev start
     # narrow TYPO3 version to 10.4 LTS
@@ -45,7 +46,7 @@ ddev-10-4: ddev-clean _ddev-dirs
     just _install-typo3 typo3cms
     git checkout -- composer.json
 
-ddev-11-5: ddev-clean _ddev-dirs
+ddev-11-5: ddev-clean _ddev-dirs _add-im7
     just _ddev-config 8.2 TYPO3_CONTEXT=Development
     ddev start
     # narrow TYPO3 version to 11.5 LTS
@@ -53,7 +54,7 @@ ddev-11-5: ddev-clean _ddev-dirs
     just _install-typo3 typo3cms
     git checkout -- composer.json
 
-ddev-12-4: ddev-clean _ddev-dirs
+ddev-12-4: ddev-clean _ddev-dirs _add-im7
     just _ddev-config 8.2 TYPO3_CONTEXT=Development,TYPO3_PATH_ROOT=/var/www/html/public,TYPO3_PATH_APP=/var/www/html
     ddev start
     # narrow TYPO3 version to 12.4 LTS
@@ -61,7 +62,7 @@ ddev-12-4: ddev-clean _ddev-dirs
     just _install-typo3 typo3
     git checkout -- composer.json
 
-ddev-13-4: ddev-clean _ddev-dirs
+ddev-13-4: ddev-clean _ddev-dirs _add-im7
     just _ddev-config 8.3 TYPO3_CONTEXT=Development,TYPO3_PATH_ROOT=/var/www/html/public,TYPO3_PATH_APP=/var/www/html
     ddev start
     # narrow TYPO3 version to 13.4 LTS
@@ -69,9 +70,18 @@ ddev-13-4: ddev-clean _ddev-dirs
     just _install-typo3 typo3
     git checkout -- composer.json
 
-add-im7:
-    cp Dockerfile.imagemagick7 .ddev/web-build/
-    ddev restart
+_add-im7:
+    cp ddev.Dockerfile .ddev/web-build/Dockerfile
+
+alpine-stock:
+    docker build -t typo3-bugs:91274-alpine - < alpine-package.Dockerfile
+    echo "Pleaas open http://localhost:8080/"
+    docker run --rm -it -p 8080:8080 typo3-bugs:91274-alpine /bin/ash -c 'cd /var/www/ && touch public/FIRST_INSTALL && php -S 0.0.0.0:8080 -t public/'
+
+alpine-compile:
+    docker build -t typo3-bugs:91274-alpine-compile - < alpine-compile.Dockerfile
+    echo "Pleaas open http://localhost:8080/"
+    docker run --rm -it -p 8080:8080 typo3-bugs:91274-alpine-compile /bin/ash -c 'cd /var/www/ && touch public/FIRST_INSTALL && php -S 0.0.0.0:8080 -t public/'
 
 reproduce:
     ddev typo3 bugs:init
