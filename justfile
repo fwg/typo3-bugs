@@ -61,6 +61,14 @@ ddev-12-4: ddev-clean _ddev-dirs
     just _install-typo3 typo3
     git checkout -- composer.json
 
+ddev-13-4: ddev-clean _ddev-dirs
+    just _ddev-config 8.3 TYPO3_CONTEXT=Development,TYPO3_PATH_ROOT=/var/www/html/public,TYPO3_PATH_APP=/var/www/html
+    ddev start
+    # narrow TYPO3 version to 13.4 LTS
+    ddev composer require typo3/cms-core:13.4.5
+    just _install-typo3 typo3
+    git checkout -- composer.json
+
 reproduce:
     ddev typo3 bugs:init
     ddev launch
