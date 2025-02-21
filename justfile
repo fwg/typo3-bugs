@@ -69,6 +69,10 @@ ddev-13-4: ddev-clean _ddev-dirs
     just _install-typo3 typo3
     git checkout -- composer.json
 
+add-im7:
+    cp Dockerfile.imagemagick7 .ddev/web-build/
+    ddev restart
+
 reproduce:
     ddev typo3 bugs:init
     ddev launch

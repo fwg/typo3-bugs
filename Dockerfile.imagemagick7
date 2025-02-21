@@ -1,0 +1,29 @@
+# add this as `.ddev/web-build/Dockerfile.imagemagick7` then ddev restart to build with IM7
+
+ENV WEBP_VERSION=1.3.2
+ENV IM_VERSION=7.1.1-41
+
+RUN apt update && apt install -y build-essential pkg-config libpng-dev libjpeg-dev libtiff-dev libheif-dev
+
+RUN curl -L https://storage.googleapis.com/downloads.webmproject.org/releases/webp/libwebp-$WEBP_VERSION.tar.gz \
+    -o /tmp/libwebp-$WEBP_VERSION.tar.gz
+RUN cd /tmp && tar xvf libwebp-$WEBP_VERSION.tar.gz
+RUN cd /tmp/libwebp-$WEBP_VERSION \
+ && ./configure \
+ && make \
+ && make install
+
+RUN curl -L https://download.imagemagick.org/archive/releases/ImageMagick-$IM_VERSION.tar.xz \
+    -o /tmp/ImageMagick-$IM_VERSION.tar.xz
+RUN cd /tmp && tar xvf ImageMagick-$IM_VERSION.tar.xz
+# would like to add: --with-jxl
+RUN cd /tmp/ImageMagick-$IM_VERSION \
+ && ./configure --with-webp --with-tiff --with-png --with-heic \
+ && make \
+ && make install
+
+RUN cd /tmp \
+ && rm -rf libwebp-$WEBP_VERSION* \
+ && rm -rf ImageMagick-$IM_VERSION*
+
+RUN ldconfig /usr/local/lib
